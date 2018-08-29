@@ -11,18 +11,18 @@ import time, random, asyncio, timeit, sys, json, codecs, threading, glob, re, st
 
 print ("\n\n ---  WELCOME  ---\n")
 
+
 cl = LINE()
 #cl = LINE(authTokenDPK="EvBoSHd3NymRnF3lzZdb.0PzLwS72Fl1EGGJMnIN3IW.1U1vPtTqpd/BytwfeUSD95WRIubQG5rPQeunnLZ9/sk=")
 cl.log("YOUR TOKEN : {}".format(str(cl.authToken)))
 channel = LINEChannel(cl,cl.server.CHANNEL_ID['LINE_TIMELINE'])
 cl.log("CHANNEL TOKEN : " + str(channel.getChannelResult()))
-
-print ("✍Ð₱₭ ฿Ø₮ LOGIN SUCCESS")
-
-clProfile = cl.getProfile()
-clSettings = cl.getSettings()
 LINE = LINEPoll(cl)
 call = cl
+clProfile = cl.getProfile()
+clSettings = cl.getSettings()
+mid = cl.getProfile().mid
+responsename1 = cl.getProfile().displayName
 
 print("---LOGIN SUCCES---")
 
@@ -168,9 +168,9 @@ myProfile = {
 	"pictureStatus": ""
 }
 
-myProfile["displayName"] = lineProfile.displayName
-myProfile["statusMessage"] = lineProfile.statusMessage
-myProfile["pictureStatus"] = lineProfile.pictureStatus
+myProfile["displayName"] = clProfile.displayName
+myProfile["statusMessage"] = clProfile.statusMessage
+myProfile["pictureStatus"] = clProfile.pictureStatus
 
 with open('creator.json', 'r') as fp:
      creator = json.load(fp)
