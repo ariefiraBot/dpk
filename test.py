@@ -1,80 +1,28 @@
 # -*- coding: utf-8 -*- 
-import linepy
-from linepy import *
-from akad.ttypes import *
-from multiprocessing import Pool, Process
-from time import sleep
-import pytz, datetime, pafy, time, timeit, random, sys, ast, re, os, json, subprocess, threading, string, codecs, requests, tweepy, ctypes, urllib, wikipedia, html5lib
-from datetime import timedelta, date
+from ARIFISTIFIK import *
 from datetime import datetime
+from time import sleep
 from bs4 import BeautifulSoup
+from gtts import gTTS
 from googletrans import Translator
-import youtube_dl
-#=============
-cl = LineClient(authToken='EwsimH5382THHIavmLQ1.aJEW7djVW2QrDd30OA0LKq.POgj/ySb68vuQBFZhLgywPBLAGzP2KOdpMRLAxp0gkY=')
-cl.log("Auth Token : " + str(cl.authToken))
-channel = LineChannel(cl)
-cl.log("Channel Access Token : " + str(channel.channelAccessToken))
-poll = LinePoll(cl)
-call = LineCall(cl)
-lineProfile = cl.getProfile()
-lineSettings = cl.getSettings()
-mid = cl.getProfile().mid
-responsename1 = cl.getProfile().displayName
+from multiprocessing import Pool, Process
+from ffmpy import FFmpeg
+import time, random, asyncio, timeit, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, urllib, urllib.parse, ast, pytz, wikipedia, pafy, youtube_dl, atexit
 
-#ki = LineClient(authToken='EvLV2qK6lkJPBWBvOXI6.YFTivvUQlJGyQ0q4WC5f5G.W7Tvs5t4FOLfP6L3/nJNrEDbhXC0lnpP62zUqAfszr8=')
-#ki.log("Auth Token : " + str(ki.authToken))
-#channel1 = LineChannel(ki)
-#ki.log("Channel Access Token : " + str(channel1.channelAccessToken))
-#lineProfile = ki.getProfile()
-#lineSettings = ki.getSettings()
-#Amid = ki.getProfile().mid
-#responsename2 = ki.getProfile().displayName
+print ("\n\n ---  WELCOME  ---\n")
 
-#kk = LineClient(authToken='Evgzt2YDGu5j8fI6S7y0.HekonXOId0LOrlrdV8suWa.Za9/BK3lzl/gXPpsb+8XV/NuwKNbdF6FWPfC2rPf9j0=')
-#kk.log("Auth Token : " + str(kk.authToken))
-#channel2 = LineChannel(kk)
-#kk.log("Channel Access Token : " + str(channel2.channelAccessToken))
-#lineProfile = kk.getProfile()
-#lineSettings = kk.getSettings()
-#Bmid = ki.getProfile().mid
-#responsename3 = ki.getProfile().displayName
+cl = LINE()
+#cl = LINE(authTokenDPK="EvBoSHd3NymRnF3lzZdb.0PzLwS72Fl1EGGJMnIN3IW.1U1vPtTqpd/BytwfeUSD95WRIubQG5rPQeunnLZ9/sk=")
+cl.log("YOUR TOKEN : {}".format(str(cl.authToken)))
+channel = LINEChannel(cl,cl.server.CHANNEL_ID['LINE_TIMELINE'])
+cl.log("CHANNEL TOKEN : " + str(channel.getChannelResult()))
 
-#kc = LineClient(authToken='EvFUiD2pfNELRC3Aer45.As29tpM17+gWKq/m5Yz8Xq.WebKAPovwWTLwdjnqmglCD8iV+zDDoDIsP7eOSE3fhc=')
-#kc.log("Auth Token : " + str(kc.authToken))
-#channel3 = LineChannel(kc)
-#kc.log("Channel Access Token : " + str(channel3.channelAccessToken))
-#lineProfile = kc.getProfile()
-#lineSettings = kc.getSettings()
-#Cmid = kc.getProfile().mid
-#responsename4 = kc.getProfile().displayName
+print ("✍Ð₱₭ ฿Ø₮ LOGIN SUCCESS")
 
-#km = LineClient(authToken='EwMTHv3xaSSvn60tes8c.qXiB6k3zJEG+VPAZ98trJa.AuMcEd6vA5w6wiZfyxlFAwSAu2o/Jh0eN9DGZIOEmoo=')
-#km.log("Auth Token : " + str(km.authToken))
-#channel4 = LineChannel(km)
-#km.log("Channel Access Token : " + str(channel4.channelAccessToken))
-#lineProfile = km.getProfile()
-#lineSettings = km.getSettings()
-#Dmid = km.getProfile().mid
-#responsename5 = km.getProfile().displayName
-
-#kb = LineClient(authToken='EwZD2TMWRC8DLQeUU9Z2.hmdPzUzp8pDxkggTRRJByG.TpUnBKD5WpzVyF1SLVgfHCRajdwHRf+PYj09TLQEj2s=')
-#kb.log("Auth Token : " + str(kb.authToken))
-#channel5 = LineChannel(kb)
-#kb.log("Channel Access Token : " + str(channel5.channelAccessToken))
-#lineProfile = kb.getProfile()
-#lineSettings = kb.getSettings()
-#Emid = kb.getProfile().mid
-#responsename6 = kb.getProfile().displayName
-
-#sw = LineClient(authToken='EvhD7rlI4FsSG4mjarXe.fi6AOZ9NS4Fsm3ey6B9rlG.IqporEXQK+RvUBPmwanuqAym2EBaTTbbN5tNNduoGIQ=')
-#sw.log("Auth Token : " + str(sw.authToken))
-#channel6 = LineChannel(sw)
-#sw.log("Channel Access Token : " + str(channel6.channelAccessToken))
-#lineProfile = sw.getProfile()
-#lineSettings = sw.getSettings()
-#Zmid = sw.getProfile().mid
-#responsename7 = sw.getProfile().displayName
+clProfile = cl.getProfile()
+clSettings = cl.getSettings()
+LINE = LINEPoll(cl)
+call = cl
 
 print("---LOGIN SUCCES---")
 
