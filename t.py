@@ -140,7 +140,7 @@ wait = {
             "name": "",
             "status":False
             },
-    "unsend":False,
+    "unsend":True,
     "mention":"Ngintip aja nih...",
     "Respontag":"Sekarang tag besok jatuh cinta... ",
     "welcome":"Welcome...",
